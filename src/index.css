@@ -20,10 +20,31 @@
   display: flex;
 }
 .wrapper .main .taglist {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
   padding: 25px;
   max-width: 300px;
   width: 100%;
   border-right: 1px solid #767590;
+}
+.wrapper .main .taglist .tag-aside {
+  color: #e3e2ed;
+  font-size: 18px;
+  width: 80%;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #92919d;
+  border-radius: 5px;
+  border: 1px solid #767590;
+}
+.wrapper .main .taglist .tag-aside:hover {
+  color: #3d3d42;
+  border: 1px solid #3d3d42;
+  background-color: #6f6f7f;
 }
 .wrapper .main .main-notes-container {
   display: flex;

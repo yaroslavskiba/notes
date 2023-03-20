@@ -5,15 +5,18 @@ import { AppDispatch, useAppSelector } from '../store/store';
 
 const Note = () => {
   const storeState = useAppSelector((state) => state.notesList.notes);
+  const storeTags = useAppSelector((state) => state.notesList.tags);
   const dispatch: AppDispatch = useDispatch();
 
   useEffect(() => {
     storeState.forEach((noteItem) => {
       noteItem.tags.forEach((tag) => {
-        dispatch(addTag(tag));
+        if (!storeTags.includes(tag)) {
+          dispatch(addTag(tag));
+        }
       });
     });
-  }, [storeState, dispatch]);
+  }, [storeState, storeTags, dispatch]);
 
   return (
     <>

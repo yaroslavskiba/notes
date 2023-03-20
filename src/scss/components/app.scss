@@ -23,11 +23,31 @@
     .taglist {
       display: flex;
       flex-direction: column;
+      align-items: center;
       gap: 15px;
       padding: 25px;
       max-width: 300px;
       width: 100%;
       border-right: 1px solid $border-bg;
+
+      .tag-aside {
+        color: $text-color;
+        font-size: 18px;
+        width: 80%;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $second-color;
+        border-radius: 5px;
+        border: 1px solid $border-bg;
+
+        &:hover {
+          color: $hover-border;
+          border: 1px solid $hover-border;
+          background-color: $main-color;
+        }
+      }
     }
 
     .main-notes-container {

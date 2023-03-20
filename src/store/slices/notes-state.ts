@@ -27,8 +27,11 @@ const notesSlice = createSlice({
     addTag: (state, action: PayloadAction<string>) => {
       state.tags.push(action.payload);
     },
+    filterTag: (state, action: PayloadAction<string>) => {
+      state.notes = state.notes.filter((note) => note.tags.includes(action.payload));
+    },
   },
 });
 
-export const { addNote, addTag } = notesSlice.actions;
+export const { addNote, addTag, filterTag } = notesSlice.actions;
 export default notesSlice.reducer;
