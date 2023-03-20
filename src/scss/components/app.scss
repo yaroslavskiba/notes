@@ -1,0 +1,82 @@
+@import '../colors.scss';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 100%;
+
+  .header {
+    min-height: 90px;
+    height: 100%;
+    border-color: blueviolet;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .input-text {
+      border: 1px solid $border-bg;
+      background-color: $second-color;
+      border-radius: 5px;
+      padding: 10px;
+      color: $text-color;
+      font-size: 18px;
+      font-family: Raleway;
+    }
+  }
+  .main {
+    border-top: 1px solid $border-bg;
+    border-bottom: 1px solid $border-bg;
+    flex: 1 1 auto;
+    display: flex;
+
+    .taglist {
+      padding: 25px;
+      max-width: 300px;
+      width: 100%;
+      border-right: 1px solid $border-bg;
+    }
+
+    .main-notes-container {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      padding: 25px;
+    }
+  }
+
+  .footer {
+    width: 100%;
+    min-height: 130px;
+    height: 100%;
+    border-color: blueviolet;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.search {
+  width: 75%;
+  height: 40px;
+}
+
+.icon-button {
+  color: $text-color;
+  font-size: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $border-bg;
+
+  &:hover {
+    border: $hover-border;
+    color: $hover-border;
+  }
+}
+.square {
+  border-radius: 50%;
+  width: 65px;
+  height: 65px;
+  background-color: $second-color;
+}

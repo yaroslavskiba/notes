@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import store from './store/store';
 import Modal from 'react-modal';
+import { MdOutlineCreate } from 'react-icons/md';
 import './index.css';
 
 const App = () => {
@@ -32,15 +33,15 @@ const App = () => {
       <main className="main">
         <aside className="taglist">{}</aside>
         <div className="main-notes-container">
+          {}
           <button className="icon-button square" onClick={hancleCreate}>
-            СОЗДАТЬ
+            <MdOutlineCreate />
           </button>
           <Modal isOpen={modalIsOpen}>{/*TODO: компонент для создания заметки*/}</Modal>
-          {}
         </div>
       </main>
       <footer className="footer">
-        <p className="txt">Created by Pavel Vorobiov</p>
+        <p>Created by Pavel Vorobiov</p>
       </footer>
     </div>
   );

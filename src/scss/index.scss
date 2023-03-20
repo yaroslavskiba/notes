@@ -1,13 +1,17 @@
+@import './components/app.scss';
+@import './colors.scss';
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+@import './components/modal.scss';
+
 html,
 body {
-  color: #000;
-  background-color: #fff;
-  width: 100%;
-  height: 100%;
+  color: $text-color;
+  background-color: $main-color;
+  width: 100vw;
+  height: 100vh;
   font-weight: 400;
   font-size: 18px;
   line-height: 1.5;
-  font-family: Josefin Sans;
 }
 
 input,
@@ -16,6 +20,7 @@ textarea {
 }
 
 * {
+  font-family: Raleway;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -58,4 +63,10 @@ ul li {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+#root {
+  margin: 15px 0;
+  width: 100%;
+  height: 100%;
 }
