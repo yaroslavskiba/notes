@@ -1,1 +1,40 @@
 @import '../colors.scss';
+
+.modal-window-component {
+  padding: 35px;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  min-width: 360px;
+  width: 100%;
+  max-width: 467px;
+  background-color: $second-color;
+  opacity: 1;
+}
+
+.modal-overlay-component {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  background-color: $modal-back;
+}
+
+.modal-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+}
+
+.note-modal {
+  width: 100%;
+}

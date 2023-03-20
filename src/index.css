@@ -13,15 +13,6 @@
   align-items: center;
   justify-content: center;
 }
-.wrapper .header .input-text {
-  border: 1px solid #767590;
-  background-color: #92919d;
-  border-radius: 5px;
-  padding: 10px;
-  color: #e3e2ed;
-  font-size: 18px;
-  font-family: Raleway;
-}
 .wrapper .main {
   border-top: 1px solid #767590;
   border-bottom: 1px solid #767590;
@@ -55,24 +46,42 @@
   height: 40px;
 }
 
-.icon-button {
-  color: #e3e2ed;
-  font-size: 28px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid #767590;
-}
-.icon-button:hover {
-  border: #3d3d42;
-  color: #3d3d42;
+.modal-window-component {
+  padding: 35px;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  min-width: 360px;
+  width: 100%;
+  max-width: 467px;
+  background-color: #92919d;
+  opacity: 1;
 }
 
-.square {
-  border-radius: 50%;
-  width: 65px;
-  height: 65px;
-  background-color: #92919d;
+.modal-overlay-component {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  background-color: rgba(118, 117, 144, 0.9);
+}
+
+.modal-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.modal-container .modal-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.note-modal {
+  width: 100%;
 }
 
 html,
@@ -141,6 +150,62 @@ ul li {
   margin: 15px 0;
   width: 100%;
   height: 100%;
+}
+
+.button-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px solid #767590;
+  border-radius: 5px;
+  background-color: #6f6f7f;
+  width: 30%;
+  height: 45px;
+  font-size: 18px;
+  color: #e3e2ed;
+}
+
+.note-text {
+  padding: 10px;
+  font-size: 18px;
+  font-family: Raleway;
+  color: #e3e2ed;
+  background: #92919d;
+  border-radius: 5px;
+  border: 1px solid #767590;
+  width: 100%;
+  height: 30%;
+}
+
+.icon-button {
+  color: #e3e2ed;
+  font-size: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #e3e2ed;
+}
+.icon-button:hover {
+  border: 1px solid #3d3d42;
+  color: #3d3d42;
+}
+
+.square {
+  border-radius: 50%;
+  width: 65px;
+  height: 65px;
+  background-color: #92919d;
+}
+
+.input-text {
+  border: 1px solid #767590;
+  background-color: #92919d;
+  border-radius: 5px;
+  padding: 10px;
+  color: #e3e2ed;
+  font-size: 18px;
+  font-family: Raleway;
 }
 
 /*# sourceMappingURL=index.css.map */

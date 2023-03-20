@@ -13,16 +13,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
-    .input-text {
-      border: 1px solid $border-bg;
-      background-color: $second-color;
-      border-radius: 5px;
-      padding: 10px;
-      color: $text-color;
-      font-size: 18px;
-      font-family: Raleway;
-    }
   }
   .main {
     border-top: 1px solid $border-bg;
@@ -59,24 +49,4 @@
 .search {
   width: 75%;
   height: 40px;
-}
-
-.icon-button {
-  color: $text-color;
-  font-size: 28px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid $border-bg;
-
-  &:hover {
-    border: $hover-border;
-    color: $hover-border;
-  }
-}
-.square {
-  border-radius: 50%;
-  width: 65px;
-  height: 65px;
-  background-color: $second-color;
 }
