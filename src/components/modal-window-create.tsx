@@ -15,7 +15,11 @@ const ModalWindow = ({ setModalIsOpen }: Props) => {
   const dispatch: AppDispatch = useDispatch();
 
   const serchTags = (text: string) => {
-    const tagsList = text.split(' ').filter((word) => word.startsWith('#') && word.length > 1);
+    const tagsList = text
+      .split('\n')
+      .join(' ')
+      .split(' ')
+      .filter((word) => word.startsWith('#') && word.length > 1);
     return tagsList.map((tag) => tag.slice(1));
   };
 
@@ -32,6 +36,7 @@ const ModalWindow = ({ setModalIsOpen }: Props) => {
     const text = textAreaState;
     const id = generateUniqId();
     dispatch(addNote({ id, title, text, tags }));
+    setModalIsOpen(false);
   };
 
   const handleTitleChange = (e: { target: { value: string } }) => {

@@ -21,6 +21,9 @@
     display: flex;
 
     .taglist {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
       padding: 25px;
       max-width: 300px;
       width: 100%;

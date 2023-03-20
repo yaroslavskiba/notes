@@ -9,10 +9,12 @@ type Note = {
 
 interface NotesStruct<T extends Note> {
   notes: Array<T>;
+  tags: string[];
 }
 
 const initialState: NotesStruct<Note> = {
   notes: [],
+  tags: [],
 };
 
 const notesSlice = createSlice({
@@ -22,8 +24,11 @@ const notesSlice = createSlice({
     addNote: (state, action: PayloadAction<Note>) => {
       state.notes.push(action.payload);
     },
+    addTag: (state, action: PayloadAction<string>) => {
+      state.tags.push(action.payload);
+    },
   },
 });
 
-export const { addNote } = notesSlice.actions;
+export const { addNote, addTag } = notesSlice.actions;
 export default notesSlice.reducer;

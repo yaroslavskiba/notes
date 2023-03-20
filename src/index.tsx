@@ -6,11 +6,12 @@ import Modal from 'react-modal';
 import { MdOutlineCreate } from 'react-icons/md';
 import './index.css';
 import ModalWindow from './components/modal-window-create';
+import Note from './components/note';
+import TagsList from './components/tags';
 
 const App = () => {
   const [serchState, setSearchState] = useState('');
   const [modalIsOpen, setModalIsOpen] = useState(false);
-
   const handleChange = (e: { target: { value: string } }) => {
     const current = e.target.value;
     setSearchState(current);
@@ -32,13 +33,20 @@ const App = () => {
         />
       </header>
       <main className="main">
-        <aside className="taglist">{}</aside>
+        <aside className="taglist">
+          <TagsList />
+        </aside>
         <div className="main-notes-container">
-          {}
+          <Note />
           <button className="icon-button square" onClick={hancleCreate}>
             <MdOutlineCreate />
           </button>
-          <Modal isOpen={modalIsOpen} className="modal-window-component" overlayClassName="modal-overlay-component">
+          <Modal
+            isOpen={modalIsOpen}
+            className="modal-window-component"
+            overlayClassName="modal-overlay-component"
+            ariaHideApp={false}
+          >
             <ModalWindow setModalIsOpen={setModalIsOpen} />
           </Modal>
         </div>
