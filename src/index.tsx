@@ -6,16 +6,11 @@ import Modal from 'react-modal';
 import { MdOutlineCreate } from 'react-icons/md';
 import './index.css';
 import ModalWindow from './components/modal-window-create';
-import Note from './components/note';
+import NoteItem from './components/note';
 import TagsList from './components/tags';
 
 const App = () => {
-  const [serchState, setSearchState] = useState('');
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const handleChange = (e: { target: { value: string } }) => {
-    const current = e.target.value;
-    setSearchState(current);
-  };
 
   const hancleCreate = () => {
     setModalIsOpen(true);
@@ -23,21 +18,12 @@ const App = () => {
 
   return (
     <div className="wrapper">
-      <header className="header">
-        <input
-          type="text"
-          className="input-text search"
-          value={serchState}
-          onChange={handleChange}
-          placeholder="Search by tags"
-        />
-      </header>
       <main className="main">
         <aside className="taglist">
           <TagsList />
         </aside>
         <div className="main-notes-container">
-          <Note />
+          <NoteItem />
           <button className="icon-button square" onClick={hancleCreate}>
             <MdOutlineCreate />
           </button>

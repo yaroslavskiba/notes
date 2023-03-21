@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addNote } from '../store/slices/notes-state';
+import { editNote } from '../store/slices/notes-state';
 import { AppDispatch } from '../store/store';
 import { AiOutlineClose } from 'react-icons/ai';
 import { CiSaveDown2 } from 'react-icons/ci';
 import { addBaseNote } from '../store/slices/base-state';
+import { Note } from '../store/slices/notes-state';
 
-interface Props {
-  setModalIsOpen: (value: boolean) => void;
-}
+type ModalWindowEditProps = {
+  setModalEditIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  noteItem: Note;
+};
 
-const ModalWindow = ({ setModalIsOpen }: Props) => {
-  const [titleState, setTitleState] = useState('');
-  const [textAreaState, setTextAreaState] = useState(``);
+const ModalWindowEdit = ({ setModalEditIsOpen, noteItem }: ModalWindowEditProps) => {
+  const [titleState, setTitleState] = useState(noteItem.title);
+  const [textAreaState, setTextAreaState] = useState(noteItem.text);
+  const idState = noteItem.id;
   const dispatch: AppDispatch = useDispatch();
 
   const serchTags = (text: string) => {
@@ -24,21 +27,15 @@ const ModalWindow = ({ setModalIsOpen }: Props) => {
     return tagsList.map((tag) => tag.slice(1));
   };
 
-  const generateUniqId = () => {
-    const firstPart = Date.now().toString(36);
-    const secondPart = Math.random().toString(36).substring(2, 8);
-    return `${firstPart}-${secondPart}`;
-  };
-
   const handleClickSave = () => {
     const copyText = textAreaState;
     const tags = serchTags(copyText);
     const title = titleState;
     const text = textAreaState;
-    const id = generateUniqId();
-    dispatch(addNote({ id, title, text, tags }));
+    const id = idState;
+    dispatch(editNote({ id, title, text, tags }));
     dispatch(addBaseNote({ id, title, text, tags }));
-    setModalIsOpen(false);
+    setModalEditIsOpen(false);
   };
 
   const handleTitleChange = (e: { target: { value: string } }) => {
@@ -52,7 +49,7 @@ const ModalWindow = ({ setModalIsOpen }: Props) => {
   };
 
   const handleClose = () => {
-    setModalIsOpen(false);
+    setModalEditIsOpen(false);
   };
 
   return (
@@ -92,4 +89,4 @@ const ModalWindow = ({ setModalIsOpen }: Props) => {
   );
 };
 
-export default ModalWindow;
+export default ModalWindowEdit;

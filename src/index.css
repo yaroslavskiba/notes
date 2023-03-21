@@ -5,18 +5,9 @@
   overflow: hidden;
   min-height: 100%;
 }
-.wrapper .header {
-  min-height: 90px;
-  height: 100%;
-  border-color: blueviolet;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 .wrapper .main {
-  border-top: 1px solid #767590;
   border-bottom: 1px solid #767590;
-  flex: 1 1 auto;
+  flex: 1 1 100%;
   display: flex;
 }
 .wrapper .main .taglist {
@@ -47,6 +38,7 @@
   background-color: #6f6f7f;
 }
 .wrapper .main .main-notes-container {
+  overflow-y: auto;
   display: flex;
   gap: 15px;
   flex-wrap: wrap;
@@ -103,6 +95,31 @@
 
 .note-modal {
   width: 100%;
+}
+
+.note-item {
+  overflow: hidden;
+  padding: 15px;
+  min-width: 300px;
+  max-width: 350px;
+  min-height: 250px;
+  max-height: 300px;
+  border: 1px solid #767590;
+  background: #92919d;
+  border-radius: 5px;
+}
+.note-item .note-item-header {
+  gap: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #6f6f7f;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+}
+.note-item .note-item-header .note-item-control {
+  display: flex;
+  gap: 10px;
 }
 
 html,

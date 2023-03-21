@@ -1,9 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addTag } from '../store/slices/notes-state';
+import { addTag, deleteNote, Note } from '../store/slices/notes-state';
 import { AppDispatch, useAppSelector } from '../store/store';
+import { AiOutlineClose, AiOutlineEdit } from 'react-icons/ai';
+import Modal from 'react-modal';
+import ModalWindowEdit from './modal-window-edit';
 
-const Note = () => {
+const NoteItem = () => {
+  const [modalEditIsOpen, setModalEditIsOpen] = useState(false);
+  const [selectedNote, setSelectedNote] = useState<any>(null);
+
   const storeState = useAppSelector((state) => state.notesList.notes);
   const storeTags = useAppSelector((state) => state.notesList.tags);
   const dispatch: AppDispatch = useDispatch();
@@ -18,11 +24,40 @@ const Note = () => {
     });
   }, [storeState, storeTags, dispatch]);
 
+  const handleEdit = (noteItem: Note) => {
+    setSelectedNote(noteItem);
+    setModalEditIsOpen(true);
+  };
+
+  const handleDelete = (id: string) => {
+    dispatch(deleteNote(id));
+  };
+
   return (
     <>
       {storeState.map((noteItem) => (
         <div className="note-item" key={noteItem.id}>
-          <h3>{noteItem.title}</h3>
+          <div className="note-item-header">
+            <h3>{noteItem.title}</h3>
+            <div className="note-item-control">
+              <button className="icon-button" onClick={() => handleEdit(noteItem)}>
+                <AiOutlineEdit />
+              </button>
+              {selectedNote && (
+                <Modal
+                  isOpen={modalEditIsOpen}
+                  className="modal-window-component"
+                  overlayClassName="modal-overlay-component"
+                  ariaHideApp={false}
+                >
+                  <ModalWindowEdit setModalEditIsOpen={setModalEditIsOpen} noteItem={selectedNote} />
+                </Modal>
+              )}
+              <button className="icon-button" onClick={() => handleDelete(noteItem.id)}>
+                <AiOutlineClose />
+              </button>
+            </div>
+          </div>
           <pre>{noteItem.text}</pre>
           {noteItem.tags.map((tag, index) => (
             <span key={`${noteItem.id}-${index}`} className="note-item-tag">
@@ -35,4 +70,4 @@ const Note = () => {
   );
 };
 
-export default Note;
+export default NoteItem;
