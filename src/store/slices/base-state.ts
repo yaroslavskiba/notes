@@ -21,8 +21,8 @@ const baseNotesSlice = createSlice({
   name: 'notes-state',
   initialState,
   reducers: {
-    addBaseNote: (state, action: PayloadAction<Note>) => {
-      state.notes.push(action.payload);
+    addBaseNote: (state, action: PayloadAction<Note[]>) => {
+      state.notes = action.payload;
     },
   },
 });

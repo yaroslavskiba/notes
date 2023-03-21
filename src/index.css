@@ -20,22 +20,28 @@
   width: 100%;
   border-right: 1px solid #767590;
 }
-.wrapper .main .taglist .tag-aside {
-  color: #e3e2ed;
-  font-size: 18px;
-  width: 80%;
-  height: 35px;
+.wrapper .main .taglist .tags-control {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
+  width: 80%;
+  height: 45px;
   background-color: #92919d;
-  border-radius: 5px;
+  color: #e3e2ed;
   border: 1px solid #767590;
+  border-radius: 5px;
+  padding: 5px 15px;
 }
-.wrapper .main .taglist .tag-aside:hover {
+.wrapper .main .taglist .tags-control:hover {
   color: #3d3d42;
   border: 1px solid #3d3d42;
   background-color: #6f6f7f;
+}
+.wrapper .main .taglist .tags-control .tag-aside {
+  width: 100%;
+  height: 100%;
+  font-size: 18px;
+  color: #e3e2ed;
 }
 .wrapper .main .main-notes-container {
   overflow-y: auto;
@@ -120,6 +126,13 @@
 .note-item .note-item-header .note-item-control {
   display: flex;
   gap: 10px;
+}
+.note-item .note-item-tag {
+  border-radius: 5px;
+  font-size: 12px;
+  background-color: #6f6f7f;
+  padding: 2px 5px;
+  color: #e3e2ed;
 }
 
 html,

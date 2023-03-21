@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { editNote } from '../store/slices/notes-state';
-import { AppDispatch } from '../store/store';
+import { AppDispatch, useAppSelector } from '../store/store';
 import { AiOutlineClose } from 'react-icons/ai';
 import { CiSaveDown2 } from 'react-icons/ci';
 import { addBaseNote } from '../store/slices/base-state';
@@ -16,7 +16,9 @@ const ModalWindowEdit = ({ setModalEditIsOpen, noteItem }: ModalWindowEditProps)
   const [titleState, setTitleState] = useState(noteItem.title);
   const [textAreaState, setTextAreaState] = useState(noteItem.text);
   const idState = noteItem.id;
+
   const dispatch: AppDispatch = useDispatch();
+  const notes = useAppSelector((state) => state.notesList.notes);
 
   const serchTags = (text: string) => {
     const tagsList = text
@@ -34,16 +36,16 @@ const ModalWindowEdit = ({ setModalEditIsOpen, noteItem }: ModalWindowEditProps)
     const text = textAreaState;
     const id = idState;
     dispatch(editNote({ id, title, text, tags }));
-    dispatch(addBaseNote({ id, title, text, tags }));
+    dispatch(addBaseNote(notes));
     setModalEditIsOpen(false);
   };
 
-  const handleTitleChange = (e: { target: { value: string } }) => {
+  const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const current = e.target.value;
     setTitleState(current);
   };
 
-  const handleTextAreaChange = (e: { target: { value: string } }) => {
+  const handleTextAreaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const current = e.target.value;
     setTextAreaState(current);
   };
@@ -76,15 +78,9 @@ const ModalWindowEdit = ({ setModalEditIsOpen, noteItem }: ModalWindowEditProps)
         value={textAreaState}
         placeholder="Note text"
       />
-      {titleState === '' || textAreaState === '' ? (
-        <button className="button-text" onClick={handleClickSave} disabled>
-          Save <CiSaveDown2 />
-        </button>
-      ) : (
-        <button className="button-text" onClick={handleClickSave}>
-          Save <CiSaveDown2 />
-        </button>
-      )}
+      <button className="button-text" onClick={handleClickSave} disabled={titleState === '' || textAreaState === ''}>
+        Save <CiSaveDown2 />
+      </button>
     </div>
   );
 };

@@ -25,4 +25,11 @@
       gap: 10px;
     }
   }
+  .note-item-tag {
+    border-radius: 5px;
+    font-size: 12px;
+    background-color: $main-color;
+    padding: 2px 5px;
+    color: $text-color;
+  }
 }

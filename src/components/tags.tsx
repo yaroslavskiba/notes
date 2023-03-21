@@ -1,10 +1,12 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { filterTag, replaceAllNotes } from '../store/slices/notes-state';
+import { deleteTag, filterTag, replaceAllNotes } from '../store/slices/notes-state';
 import { AppDispatch, useAppSelector } from '../store/store';
+import { AiOutlineClose } from 'react-icons/ai';
 
 const TagsList = () => {
   const tagsState = useAppSelector((state) => state.notesList.tags);
+  console.log(tagsState);
   const dispatch: AppDispatch = useDispatch();
   const base = useAppSelector((state) => state.baseNotesList.notes);
 
@@ -17,13 +19,24 @@ const TagsList = () => {
     dispatch(replaceAllNotes(copy));
   };
 
+  const handleDelete = (index: number) => {
+    dispatch(deleteTag(index));
+  };
+
   return (
     <>
       {tagsState.map((tag: string, index) => {
         return (
-          <button key={index} className="tag-aside" onClick={() => onFilterNotes(tag)}>
-            {tag}
-          </button>
+          <>
+            <div className="tags-control" key={index}>
+              <button className="tag-aside" onClick={() => onFilterNotes(tag)}>
+                {tag}
+              </button>
+              <button className="icon-button" onClick={() => handleDelete(index)}>
+                <AiOutlineClose />
+              </button>
+            </div>
+          </>
         );
       })}
       <button className="button-text" onClick={handleReset}>

@@ -45,8 +45,11 @@ const notesSlice = createSlice({
         state.notes.splice(index, 1);
       }
     },
+    deleteTag: (state, action: PayloadAction<number>) => {
+      state.tags.splice(action.payload, 1);
+    },
   },
 });
 
-export const { addNote, addTag, filterTag, replaceAllNotes, editNote, deleteNote } = notesSlice.actions;
+export const { addNote, addTag, filterTag, replaceAllNotes, editNote, deleteNote, deleteTag } = notesSlice.actions;
 export default notesSlice.reducer;

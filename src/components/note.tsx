@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addTag, deleteNote, Note } from '../store/slices/notes-state';
+import { addTag, deleteNote, filterTag, Note } from '../store/slices/notes-state';
 import { AppDispatch, useAppSelector } from '../store/store';
 import { AiOutlineClose, AiOutlineEdit } from 'react-icons/ai';
 import Modal from 'react-modal';
@@ -33,6 +33,10 @@ const NoteItem = () => {
     dispatch(deleteNote(id));
   };
 
+  const handleFilter = (tag: string) => {
+    dispatch(filterTag(tag));
+  };
+
   return (
     <>
       {storeState.map((noteItem) => (
@@ -60,9 +64,9 @@ const NoteItem = () => {
           </div>
           <pre>{noteItem.text}</pre>
           {noteItem.tags.map((tag, index) => (
-            <span key={`${noteItem.id}-${index}`} className="note-item-tag">
+            <button key={`${noteItem.id}-${index}`} className="note-item-tag" onClick={() => handleFilter(tag)}>
               {tag}
-            </span>
+            </button>
           ))}
         </div>
       ))}
