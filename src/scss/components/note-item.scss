@@ -4,8 +4,9 @@
   display: inline-block;
   overflow-y: scroll;
   padding: 15px;
-  width: auto;
   min-width: 300px;
+  max-width: 650px;
+  width: auto;
   flex-grow: 1;
   flex-shrink: 0;
   margin-bottom: 20px;
@@ -13,7 +14,6 @@
   background: $second-color;
   border-radius: 5px;
   max-height: 400px;
-  max-width: calc(100% / 3 - 30px);
   word-wrap: break-word;
 
   .note-item-header {
