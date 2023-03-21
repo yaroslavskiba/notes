@@ -1,27 +1,31 @@
 import React, { useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Provider } from 'react-redux';
-import store from './store/store';
+import { Provider, useDispatch } from 'react-redux';
+import store, { AppDispatch } from './store/store';
 import Modal from 'react-modal';
 import { MdOutlineCreate } from 'react-icons/md';
-import './index.css';
 import ModalWindow from './components/modal-window-create';
 import NoteItem from './components/note';
-import TagsList from './components/tags';
+import { setSelectedTag } from './store/slices/notes-state';
+import './index.css';
 
 const App = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const dispatch: AppDispatch = useDispatch();
 
   const hancleCreate = () => {
     setModalIsOpen(true);
   };
+  const handleReset = () => {
+    dispatch(setSelectedTag(''));
+  };
 
   return (
     <div className="wrapper">
+      <button className="button-text reset" onClick={handleReset}>
+        Сброс
+      </button>
       <main className="main">
-        <aside className="taglist">
-          <TagsList />
-        </aside>
         <div className="main-notes-container">
           <NoteItem />
           <button className="icon-button square" onClick={hancleCreate}>

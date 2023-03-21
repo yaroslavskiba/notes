@@ -46,8 +46,8 @@
 .wrapper .main .main-notes-container {
   overflow-y: auto;
   display: flex;
-  gap: 15px;
   flex-wrap: wrap;
+  gap: 20px;
   padding: 25px;
 }
 .wrapper .footer {
@@ -104,15 +104,20 @@
 }
 
 .note-item {
-  overflow: hidden;
+  display: inline-block;
+  overflow-y: scroll;
   padding: 15px;
+  width: auto;
   min-width: 300px;
-  max-width: 350px;
-  min-height: 250px;
-  max-height: 300px;
+  flex-grow: 1;
+  flex-shrink: 0;
+  margin-bottom: 20px;
   border: 1px solid #767590;
   background: #92919d;
   border-radius: 5px;
+  max-height: 400px;
+  max-width: calc(33.3333333333% - 30px);
+  word-wrap: break-word;
 }
 .note-item .note-item-header {
   gap: 10px;
@@ -127,11 +132,26 @@
   display: flex;
   gap: 10px;
 }
-.note-item .note-item-tag {
+.note-item .note-item-tag-container {
+  display: inline-flex;
+  align-items: center;
+}
+.note-item .note-item-tag-container .note-item-tag {
+  display: flex;
+  align-items: center;
   border-radius: 5px;
   font-size: 12px;
   background-color: #6f6f7f;
   padding: 2px 5px;
+  color: #e3e2ed;
+  position: relative;
+}
+.note-item .note-item-tag-container .delete-button {
+  margin-right: 5px;
+  font-size: 12px;
+  height: 10px;
+  width: 10px;
+  margin-left: 3px;
   color: #e3e2ed;
 }
 
@@ -217,6 +237,12 @@ ul li {
   color: #e3e2ed;
 }
 
+.reset {
+  margin: 0 25px;
+  max-width: 90px;
+  background-color: #92919d;
+}
+
 .note-text {
   padding: 10px;
   font-size: 18px;
@@ -257,6 +283,11 @@ ul li {
   color: #e3e2ed;
   font-size: 18px;
   font-family: Raleway;
+}
+
+.tag-selected-indicator {
+  font-size: 12px;
+  color: #e3e2ed;
 }
 
 /*# sourceMappingURL=index.css.map */

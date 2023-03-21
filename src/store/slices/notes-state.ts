@@ -10,11 +10,13 @@ export type Note = {
 interface NotesStruct<T extends Note> {
   notes: Array<T>;
   tags: string[];
+  selectedTag: string;
 }
 
 const initialState: NotesStruct<Note> = {
   notes: [],
   tags: [],
+  selectedTag: '',
 };
 
 const notesSlice = createSlice({
@@ -26,9 +28,6 @@ const notesSlice = createSlice({
     },
     addTag: (state, action: PayloadAction<string>) => {
       state.tags.push(action.payload);
-    },
-    filterTag: (state, action: PayloadAction<string>) => {
-      state.notes = state.notes.filter((note) => note.tags.includes(action.payload));
     },
     replaceAllNotes: (state, action: PayloadAction<Note[]>) => {
       state.notes = action.payload;
@@ -45,11 +44,17 @@ const notesSlice = createSlice({
         state.notes.splice(index, 1);
       }
     },
-    deleteTag: (state, action: PayloadAction<number>) => {
-      state.tags.splice(action.payload, 1);
+    removeTag: (state, action: PayloadAction<{ noteId: string; tagIndex: number }>) => {
+      const noteIndex = state.notes.findIndex((note) => note.id === action.payload.noteId);
+      if (noteIndex !== -1) {
+        state.notes[noteIndex].tags.splice(action.payload.tagIndex, 1);
+      }
+    },
+    setSelectedTag: (state, action: PayloadAction<string>) => {
+      state.selectedTag = action.payload;
     },
   },
 });
 
-export const { addNote, addTag, filterTag, replaceAllNotes, editNote, deleteNote, deleteTag } = notesSlice.actions;
+export const { addNote, addTag, replaceAllNotes, editNote, deleteNote, removeTag, setSelectedTag } = notesSlice.actions;
 export default notesSlice.reducer;

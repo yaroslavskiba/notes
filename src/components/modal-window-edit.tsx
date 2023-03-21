@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { editNote } from '../store/slices/notes-state';
-import { AppDispatch, useAppSelector } from '../store/store';
+import { AppDispatch } from '../store/store';
 import { AiOutlineClose } from 'react-icons/ai';
 import { CiSaveDown2 } from 'react-icons/ci';
-import { addBaseNote } from '../store/slices/base-state';
 import { Note } from '../store/slices/notes-state';
 
 type ModalWindowEditProps = {
@@ -16,9 +15,7 @@ const ModalWindowEdit = ({ setModalEditIsOpen, noteItem }: ModalWindowEditProps)
   const [titleState, setTitleState] = useState(noteItem.title);
   const [textAreaState, setTextAreaState] = useState(noteItem.text);
   const idState = noteItem.id;
-
   const dispatch: AppDispatch = useDispatch();
-  const notes = useAppSelector((state) => state.notesList.notes);
 
   const serchTags = (text: string) => {
     const tagsList = text
@@ -36,7 +33,6 @@ const ModalWindowEdit = ({ setModalEditIsOpen, noteItem }: ModalWindowEditProps)
     const text = textAreaState;
     const id = idState;
     dispatch(editNote({ id, title, text, tags }));
-    dispatch(addBaseNote(notes));
     setModalEditIsOpen(false);
   };
 
@@ -57,7 +53,7 @@ const ModalWindowEdit = ({ setModalEditIsOpen, noteItem }: ModalWindowEditProps)
   return (
     <div className="modal-container">
       <div className="modal-header">
-        <p>Создание заметки:</p>
+        <p>Редактирование заметки:</p>
         <button className="icon-button" onClick={handleClose}>
           <AiOutlineClose />
         </button>

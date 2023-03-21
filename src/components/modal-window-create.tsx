@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addNote } from '../store/slices/notes-state';
-import { AppDispatch, useAppSelector } from '../store/store';
+import { AppDispatch } from '../store/store';
 import { AiOutlineClose } from 'react-icons/ai';
 import { CiSaveDown2 } from 'react-icons/ci';
-import { addBaseNote } from '../store/slices/base-state';
 
 interface Props {
   setModalIsOpen: (value: boolean) => void;
@@ -13,7 +12,6 @@ interface Props {
 const ModalWindow = ({ setModalIsOpen }: Props) => {
   const [titleState, setTitleState] = useState('');
   const [textAreaState, setTextAreaState] = useState(``);
-  const storeState = useAppSelector((state) => state.notesList.notes);
 
   const dispatch: AppDispatch = useDispatch();
 
@@ -39,7 +37,6 @@ const ModalWindow = ({ setModalIsOpen }: Props) => {
     const text = textAreaState;
     const id = generateUniqId();
     dispatch(addNote({ id, title, text, tags }));
-    dispatch(addBaseNote([...storeState]));
     setModalIsOpen(false);
   };
 

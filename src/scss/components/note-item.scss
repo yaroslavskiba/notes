@@ -1,15 +1,20 @@
 @import '../colors.scss';
 
 .note-item {
-  overflow: hidden;
+  display: inline-block;
+  overflow-y: scroll;
   padding: 15px;
+  width: auto;
   min-width: 300px;
-  max-width: 350px;
-  min-height: 250px;
-  max-height: 300px;
+  flex-grow: 1;
+  flex-shrink: 0;
+  margin-bottom: 20px;
   border: 1px solid $border-bg;
   background: $second-color;
   border-radius: 5px;
+  max-height: 400px;
+  max-width: calc(100% / 3 - 30px);
+  word-wrap: break-word;
 
   .note-item-header {
     gap: 10px;
@@ -25,11 +30,28 @@
       gap: 10px;
     }
   }
-  .note-item-tag {
-    border-radius: 5px;
-    font-size: 12px;
-    background-color: $main-color;
-    padding: 2px 5px;
-    color: $text-color;
+
+  .note-item-tag-container {
+    display: inline-flex;
+    align-items: center;
+
+    .note-item-tag {
+      display: flex;
+      align-items: center;
+      border-radius: 5px;
+      font-size: 12px;
+      background-color: $main-color;
+      padding: 2px 5px;
+      color: $text-color;
+      position: relative;
+    }
+    .delete-button {
+      margin-right: 5px;
+      font-size: 12px;
+      height: 10px;
+      width: 10px;
+      margin-left: 3px;
+      color: $text-color;
+    }
   }
 }

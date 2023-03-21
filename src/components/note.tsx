@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addTag, deleteNote, filterTag, Note } from '../store/slices/notes-state';
+import { addTag, deleteNote, Note, removeTag, setSelectedTag } from '../store/slices/notes-state';
 import { AppDispatch, useAppSelector } from '../store/store';
 import { AiOutlineClose, AiOutlineEdit } from 'react-icons/ai';
 import Modal from 'react-modal';
@@ -12,6 +12,8 @@ const NoteItem = () => {
 
   const storeState = useAppSelector((state) => state.notesList.notes);
   const storeTags = useAppSelector((state) => state.notesList.tags);
+  const selectedTag = useAppSelector((state) => state.notesList.selectedTag);
+
   const dispatch: AppDispatch = useDispatch();
 
   useEffect(() => {
@@ -33,13 +35,26 @@ const NoteItem = () => {
     dispatch(deleteNote(id));
   };
 
-  const handleFilter = (tag: string) => {
-    dispatch(filterTag(tag));
+  const handleDeleteTag = (noteId: string, tagIndex: number) => {
+    const tagToRemove = storeState.find((note) => note.id === noteId)?.tags[tagIndex];
+    dispatch(removeTag({ noteId, tagIndex }));
+    if (tagToRemove === selectedTag) {
+      dispatch(setSelectedTag(''));
+    }
   };
+
+  const handleTagClick = (tag: string) => {
+    dispatch(setSelectedTag(tag));
+  };
+
+  let filteredNotes = storeState;
+  if (selectedTag !== '') {
+    filteredNotes = storeState.filter((noteItem) => noteItem.tags.includes(selectedTag));
+  }
 
   return (
     <>
-      {storeState.map((noteItem) => (
+      {filteredNotes.map((noteItem) => (
         <div className="note-item" key={noteItem.id}>
           <div className="note-item-header">
             <h3>{noteItem.title}</h3>
@@ -64,9 +79,15 @@ const NoteItem = () => {
           </div>
           <pre>{noteItem.text}</pre>
           {noteItem.tags.map((tag, index) => (
-            <button key={`${noteItem.id}-${index}`} className="note-item-tag" onClick={() => handleFilter(tag)}>
-              {tag}
-            </button>
+            <div key={`${noteItem.id}-${index}`} className="note-item-tag-container">
+              <button className="note-item-tag" onClick={() => handleTagClick(tag)}>
+                {tag}
+                {selectedTag === tag && <span className="tag-selected-indicator">*</span>}
+              </button>
+              <button className="delete-button" onClick={() => handleDeleteTag(noteItem.id, index)}>
+                <AiOutlineClose />
+              </button>
+            </div>
           ))}
         </div>
       ))}
