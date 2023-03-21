@@ -12,6 +12,7 @@
    - Redux Toolkit;
 
    Установка:
+   
     git clone git@github.com:yaroslavskiba/notes.git
     cd notes
     npm i
