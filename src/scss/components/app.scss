@@ -61,7 +61,6 @@
 
     .main-notes-container {
       width: max-content;
-      display: grid;
       display: inline-flex;
       padding: 25px;
       flex-wrap: wrap;
@@ -72,7 +71,7 @@
     width: 100%;
     min-height: 130px;
     height: 100%;
-    border-color: blueviolet;
+    border-color: $border-bg;
     display: flex;
     justify-content: center;
     align-items: center;

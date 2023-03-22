@@ -55,7 +55,6 @@
 }
 .wrapper .main .main-notes-container {
   width: max-content;
-  display: grid;
   display: inline-flex;
   padding: 25px;
   flex-wrap: wrap;
@@ -64,7 +63,7 @@
   width: 100%;
   min-height: 130px;
   height: 100%;
-  border-color: blueviolet;
+  border-color: #767590;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -122,7 +121,7 @@
   overflow: auto;
   word-break: break-word;
   min-width: 300px;
-  min-height: 300px;
+  min-height: 150px;
   max-width: 500px;
   max-height: max-content;
   flex-shrink: 0;
