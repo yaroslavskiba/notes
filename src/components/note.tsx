@@ -77,7 +77,7 @@ const NoteItem = () => {
               </button>
             </div>
           </div>
-          <pre>{noteItem.text}</pre>
+          <p>{noteItem.text}</p>
           {noteItem.tags.map((tag, index) => (
             <div key={`${noteItem.id}-${index}`} className="note-item-tag-container">
               <button className="note-item-tag" onClick={() => handleTagClick(tag)}>

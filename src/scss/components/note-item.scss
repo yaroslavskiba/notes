@@ -1,20 +1,20 @@
 @import '../colors.scss';
 
 .note-item {
-  display: inline-block;
-  overflow-y: scroll;
+  display: block;
   padding: 15px;
-  min-width: 300px;
-  max-width: 650px;
-  width: auto;
-  flex-grow: 1;
-  flex-shrink: 0;
-  margin-bottom: 20px;
   border: 1px solid $border-bg;
   background: $second-color;
   border-radius: 5px;
-  max-height: 400px;
-  word-wrap: break-word;
+  overflow: auto;
+  word-break: break-word;
+  min-width: 300px;
+  min-height: 300px;
+  max-width: 500px;
+  max-height: max-content;
+  flex-shrink: 0;
+  height: min-content;
+  white-space: break-spaces;
 
   .note-item-header {
     gap: 10px;

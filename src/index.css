@@ -5,7 +5,17 @@
   overflow: hidden;
   min-height: 100%;
 }
+.wrapper .header {
+  margin: 0 30px;
+  display: flex;
+  gap: 15px;
+  height: 90px;
+  align-items: center;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
 .wrapper .main {
+  padding: 20px;
   border-bottom: 1px solid #767590;
   flex: 1 1 100%;
   display: flex;
@@ -44,11 +54,11 @@
   color: #e3e2ed;
 }
 .wrapper .main .main-notes-container {
-  overflow-y: auto;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  width: max-content;
+  display: grid;
+  display: inline-flex;
   padding: 25px;
+  flex-wrap: wrap;
 }
 .wrapper .footer {
   width: 100%;
@@ -104,20 +114,20 @@
 }
 
 .note-item {
-  display: inline-block;
-  overflow-y: scroll;
+  display: block;
   padding: 15px;
-  min-width: 300px;
-  max-width: 650px;
-  width: auto;
-  flex-grow: 1;
-  flex-shrink: 0;
-  margin-bottom: 20px;
   border: 1px solid #767590;
   background: #92919d;
   border-radius: 5px;
-  max-height: 400px;
-  word-wrap: break-word;
+  overflow: auto;
+  word-break: break-word;
+  min-width: 300px;
+  min-height: 300px;
+  max-width: 500px;
+  max-height: max-content;
+  flex-shrink: 0;
+  height: min-content;
+  white-space: break-spaces;
 }
 .note-item .note-item-header {
   gap: 10px;

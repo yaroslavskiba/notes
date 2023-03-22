@@ -22,15 +22,17 @@ const App = () => {
 
   return (
     <div className="wrapper">
-      <button className="button-text reset" onClick={handleReset}>
-        Сброс
-      </button>
+      <header className="header">
+        <button className="button-text reset" onClick={handleReset}>
+          Сброс
+        </button>
+        <button className="icon-button square new" onClick={hancleCreate}>
+          <MdOutlineCreate />
+        </button>
+      </header>
       <main className="main">
         <div className="main-notes-container">
           <NoteItem />
-          <button className="icon-button square" onClick={hancleCreate}>
-            <MdOutlineCreate />
-          </button>
           <Modal
             isOpen={modalIsOpen}
             className="modal-window-component"
